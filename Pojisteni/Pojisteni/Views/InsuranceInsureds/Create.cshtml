@@ -1,0 +1,45 @@
+﻿@model Pojisteni.Models.InsuranceInsured
+
+@{
+    ViewData["Title"] = "Nové pojištění pro pojištěnce";
+}
+<h4>Nové pojištění pro pojištěnce '@ViewBag.Insured.LastNameAndName'</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input type="hidden" asp-for="InsuredID" class="form-control" value="@ViewBag.Insured.ID" />
+            </div>
+            <div class="form-group">
+                <label asp-for="InsuranceID" class="control-label">Vyberte pojištění</label>
+                <select asp-for="InsuranceID" class="form-select" asp-items="ViewBag.InsuranceID"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Amount" class="control-label"></label>
+                <input asp-for="Amount" class="form-control" />
+                <span asp-validation-for="Amount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Subject" class="control-label"></label>
+                <input asp-for="Subject" class="form-control" />
+                <span asp-validation-for="Subject" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StartsAt" class="control-label"></label>
+                <input type="date" asp-for="StartsAt" class="form-control" />
+                <span asp-validation-for="StartsAt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EndsAt" class="control-label"></label>
+                <input type="date" asp-for="EndsAt" class="form-control" />
+                <span asp-validation-for="EndsAt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Uložit" class="btn btn-primary my-3" />
+                <a href='javascript:history.go(-1)' class="btn btn-warning">ZPĚT</a>
+            </div>
+        </form>
+    </div>
+</div>

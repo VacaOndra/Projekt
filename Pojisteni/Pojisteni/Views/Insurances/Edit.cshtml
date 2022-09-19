@@ -1,0 +1,25 @@
+﻿@model Pojisteni.Models.Insurance
+
+@{
+    ViewData["Title"] = "Editovat pojištění";
+}
+<div class="row">
+    <div class="col-sm-12 col-md-6 col-xl-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group has-icon-left">
+                <label asp-for="Name" class="control-label"></label>
+                <div class="position-relative">
+                    <input asp-for="Name" class="form-control" />
+                    <div class="form-control-icon">
+                        <i data-feather="tag"></i>
+                    </div>
+                </div>
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group my-3">
+                <input type="submit" value="Uložit" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>

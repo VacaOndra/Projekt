@@ -1,0 +1,62 @@
+﻿@model Pojisteni.Models.Event
+
+@{
+    ViewData["Title"] = "Smazat událost";
+}
+
+<h4>@ViewData["Title"] ?</h4>
+<hr />
+<div class="row mb-2">
+    <div class="col-sm-3 col-md-3 col-xl-2 font-bold">
+        @Html.DisplayNameFor(model => model.InsuranceInsured.Insured.LastNameAndName)
+    </div>
+    <div class="col">
+        @Html.DisplayFor(model => model.InsuranceInsured.Insured.LastNameAndName)
+    </div>
+</div>
+
+<div class="row mb-2">
+    <div class="col-sm-3 col-md-3 col-xl-2 font-bold">
+        @Html.DisplayNameFor(model => model.InsuranceInsured.Insurance.Name)
+    </div>
+    <div class="col">
+        @Html.DisplayFor(model => model.InsuranceInsured.Insurance.Name)
+    </div>
+</div>
+<div class="row mb-2">
+    <div class="col-sm-3 col-md-3 col-xl-2 font-bold">
+        @Html.DisplayNameFor(model => model.InsertDateTime)
+    </div>
+    <div class="col">
+        @Model.InsertDateTime.ToShortDateString()
+    </div>
+</div>
+<div class="row mb-2">
+    <div class="col-sm-3 col-md-3 col-xl-2 font-bold">
+        @Html.DisplayNameFor(model => model.DateTime)
+    </div>
+    <div class="col">
+        @Model.DateTime.ToShortDateString()
+    </div>
+</div>
+<div class="row mb-2">
+    <div class="col-sm-3 col-md-3 col-xl-2 font-bold">
+        @Html.DisplayNameFor(model => model.InsuranceInsured.Amount)
+    </div>
+    <div class="col">
+        @Html.DisplayFor(model => model.InsuranceInsured.Amount)
+    </div>
+</div>
+<div class="row mb-2">
+    <div class="col-sm-3 col-md-3 col-xl-2 font-bold">
+        @Html.DisplayNameFor(model => model.Description)
+    </div>
+    <div class="col">
+        @Html.DisplayFor(model => model.Description)
+    </div>
+</div>
+<form asp-action="Delete">
+    <input type="hidden" asp-for="ID" />
+    <input type="submit" value="ANO" class="btn btn-danger" />
+    <a href="javascript:history.back()" class="btn btn-warning">NE</a>
+</form>

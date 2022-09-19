@@ -1,0 +1,148 @@
+﻿@model Pojisteni.Models.Insured
+
+@{
+    ViewData["Title"] = "Detail pojištěnce";
+}
+<div class="container-fluid">
+    <div class="row mb-3">
+        <div class="col-sm-6 col-md-4 col-xl-3 my-3">
+            <img src="~/img/user.png" alt="avatar" class="img-fluid avatar avatar-status h-75" />
+        </div>
+        <div class="col-sm-6 px-3 my-3">
+            <div class="row mb-3">
+                <div class="col-sm-3 col-md-3 col-xl-2 font-bold">
+                    @Html.DisplayNameFor(model => model.LastNameAndName)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.LastNameAndName)
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-sm-3 col-md-3 col-xl-2 font-bold">
+                    @Html.DisplayNameFor(model => model.IdentityNumber)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.IdentityNumber)
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-sm-3 col-md-3 col-xl-2 font-bold">
+                    @Html.DisplayNameFor(model => model.Adress)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.Adress)
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-sm-3 col-md-3 col-xl-2 font-bold">
+                    @Html.DisplayNameFor(model => model.City)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.City)
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-sm-3 col-md-3 col-xl-2 font-bold">
+                    @Html.DisplayNameFor(model => model.PostalCode)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.PostalCode)
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-sm-3 col-md-3 col-xl-2 font-bold">
+                    @Html.DisplayNameFor(model => model.Email)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.Email)
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-sm-3 col-md-3 col-xl-2 font-bold">
+                    @Html.DisplayNameFor(model => model.PhoneNumber)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.PhoneNumber)
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-sm-3 col-md-3 col-xl-2 font-bold">
+                    Login
+                </div>
+                <div class="col">
+                    @(ViewBag.HasLogin ? "ANO" : "NE")
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <p>
+            <a asp-action="RegisterInsured" asp-controller="Account" asp-route-insuredid="@Model.ID" class="btn btn-secondary @(ViewBag.HasLogin ? "disabled" : "")">Založit login</a>
+            <a asp-action="Edit" asp-route-id="@Model.ID" class="btn btn-warning">Editovat</a>
+            <a asp-action="Delete" asp-route-id="@Model.ID" class="btn btn-danger">Odstranit</a>
+        </p>
+    </div>
+    <hr />
+    <div class="row">
+        <p>
+            <a asp-action="Create" asp-controller="InsuranceInsureds" asp-route-insuredid="@Model.ID" class="btn btn-primary @(ViewBag.InsuranceCount > 0 ? "" : "disabled")">Nové pojištění</a>
+        </p>
+    </div>
+    <div class="row mb-3">
+        @if (Model.InsuranceInsureds.Count() > 0)
+        {
+            <table class="table table-sm table-bordered table-responsive">
+                <thead>
+                    <tr>
+                        <th>
+                            Název
+                        </th>
+                        <th>
+                            Částka
+                        </th>
+                        <th class="text-center">
+                            Status
+                        </th>
+                        <th class="fit"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.InsuranceInsureds)
+                    {
+                        <tr>
+                            <td class="align-middle">
+                                <a asp-action="Details" asp-controller="InsuranceInsureds" asp-route-id="@item.ID">@Html.DisplayFor(modelItem => item.Insurance.Name)</a>
+                            </td>
+                            <td class="align-middle">
+                                @Html.DisplayFor(modelItem => item.Amount)
+                            </td>
+                            <td class="align-middle text-center">
+                                @if (item.Status)
+                                {
+                                    <span class="badge bg-danger">@item.StatusString</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-success">@item.StatusString</span>
+                                }
+                            </td>
+                            <td class="align-middle fit">
+                                <a asp-action="Create" asp-controller="Events" asp-route-insuranceinsuredid="@item.ID" class="btn btn-secondary @(item.Status ? "disabled" : "")">Nahlásit pojistnou událost</a>
+                                <a asp-action="Edit" asp-controller="InsuranceInsureds" asp-route-id="@item.ID" class="btn btn-warning">Editovat</a>
+                                <a asp-action="Delete" asp-controller="InsuranceInsureds" asp-route-id="@item.ID" class="btn btn-danger">Odstranit</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <div class="container-fluid">
+                <div class="alert alert-light-warning text-center h6" role="alert">
+                    Pojištěnec zatím nemá sjednané žádná pojištění
+                </div>
+            </div>
+        }
+    </div>
+</div>

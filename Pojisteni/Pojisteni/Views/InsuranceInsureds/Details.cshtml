@@ -1,0 +1,77 @@
+﻿@model Pojisteni.Models.InsuranceInsured
+
+@{
+    ViewData["Title"] = "Detail pojištění";
+}
+<div class="row mb-3">
+    <div class="col-sm-12 px-3 my-3">
+        <div class="row mb-3">
+            <div class="col-sm-4 col-md-6 col-xl-3 font-bold">
+                @Html.DisplayNameFor(model => model.Insured.LastNameAndName)
+            </div>
+            <div class="col">
+                @Html.DisplayFor(model => model.Insured.LastNameAndName)
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-sm-4 col-md-6 col-xl-3 font-bold">
+                @Html.DisplayNameFor(model => model.Insurance.Name)
+            </div>
+            <div class="col">
+                @Html.DisplayFor(model => model.Insurance.Name)
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-sm-4 col-md-6 col-xl-3 font-bold">
+                @Html.DisplayNameFor(model => model.Amount)
+            </div>
+            <div class="col">
+                @Html.DisplayFor(model => model.Amount)
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-sm-4 col-md-6 col-xl-3 font-bold">
+                @Html.DisplayNameFor(model => model.Subject)
+            </div>
+            <div class="col">
+                @Html.DisplayFor(model => model.Subject)
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-sm-4 col-md-6 col-xl-3 font-bold">
+                @Html.DisplayNameFor(model => model.StartsAt)
+            </div>
+            <div class="col">
+                @Model.StartsAt.ToShortDateString()
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-sm-4 col-md-6 col-xl-3 font-bold">
+                @Html.DisplayNameFor(model => model.EndsAt)
+            </div>
+            <div class="col">
+                @Model.EndsAt.ToShortDateString()
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-sm-4 col-md-6 col-xl-3 font-bold">
+                @Html.DisplayNameFor(model => model.Status)
+            </div>
+            <div class="col">
+                @if (Model.Status)
+                {
+                    <span class="badge bg-danger">@Model.StatusString</span>
+                }
+                else
+                {
+                    <span class="badge bg-success">@Model.StatusString</span>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <a asp-action="Create" asp-controller="Events" asp-route-insuranceinsuredid="@Model.ID" class="btn btn-secondary @(Model.Status ? "disabled" : "")">Nahlásit pojistnou událost</a>
+    <a asp-action="Edit" asp-route-id="@Model.ID" class="btn btn-warning">Editovat</a>
+    <a asp-action="Delete" asp-route-id="@Model.ID" class="btn btn-danger">Odstranit</a>
+</div>

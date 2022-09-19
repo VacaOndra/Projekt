@@ -1,0 +1,32 @@
+﻿@model Pojisteni.Models.Insurance
+
+@{
+    ViewData["Title"] = "Smazat pojištění";
+}
+<h4>@ViewData["Title"] '@Html.DisplayFor(model => model.Name)' ?</h4>
+<hr />
+@if (@ViewBag.insuredsCount > 0)
+{
+    <div class="alert alert-danger text-center col-xl-4 col-md-6 col-sm-8 h6" role="alert">
+        <i data-feather="alert-circle"></i>
+        Počet aktivních pojištěnců: @ViewBag.insuredsCount
+    </div>
+}
+else
+{
+    <div class="alert alert-success text-center col-xl-3 col-md-6 col-sm-8 h6" role="alert">
+        <i data-feather="check-circle"></i>
+        Počet aktivních pojištěnců: @ViewBag.insuredsCount
+    </div>
+}
+@if (@ViewBag.insuredsCount > 0)
+{
+    <div class="row my-2">
+        <small class="text-danger py-3">POZOR smaže dané pojištení u pojištěnců !</small>
+    </div>
+}
+<form asp-action="Delete">
+    <input type="hidden" asp-for="ID" />
+    <input type="submit" value="ANO" class="btn btn-danger" />
+    <a asp-action="Index" class="btn btn-warning mx-2">NE</a>
+</form>

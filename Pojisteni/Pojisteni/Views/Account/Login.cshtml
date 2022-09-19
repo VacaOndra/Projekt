@@ -1,0 +1,74 @@
+﻿@using Microsoft.AspNetCore.Identity
+@model LoginViewModel
+@inject SignInManager<AccountIdentity> SignInManager
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+
+<body>
+    <div id="auth">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5 col-sm-12 mx-auto">
+                    <div class="card pt-4">
+                        <div class="card-body">
+                            <div class="text-center mb-5">
+                                <h3>Přihlášení</h3>
+                                <p>Prosím přihlaste se k pokračování na portál.</p>
+                            </div>
+                            <form asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
+                                <div asp-validation-summary="All" class="text-danger"></div>
+                                <div class="form-group position-relative has-icon-left">
+                                    <label asp-for="Email"></label>
+                                    <div class="position-relative">
+                                        <input asp-for="Email" class="form-control" >
+                                        <div class="form-control-icon">
+                                            <i data-feather="user"></i>
+                                        </div>
+                                    </div>
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                                <div class="form-group position-relative has-icon-left">
+                                    <label asp-for="Password"></label>
+                                    <div class="position-relative">
+                                        <input asp-for="Password" class="form-control" />
+                                        <div class="form-control-icon">
+                                            <i data-feather="lock"></i>
+                                        </div>
+                                    </div>
+                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                </div>
+                                <div class='form-check clearfix my-4'>
+                                    <div class="checkbox float-left">
+                                        <input asp-for="RememberMe" type="checkbox" class='form-check-input'>
+                                        <label asp-for="RememberMe">Zapamatovat</label>
+                                    </div>
+                                </div>
+                                <div class="clearfix">
+                                    <button type="submit" class="btn btn-primary float-right">Příhlásit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script src="~/js/feather.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/main.js" asp-append-version="true"></script>
+</body>
+</html>

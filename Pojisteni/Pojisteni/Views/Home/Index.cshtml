@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="text-center">
+    <h1 class="mb-3">Rychlý přehled</h1>
+</div>
+<hr />
+<div class="row mb-2">
+    <div class="col-12 col-xl-4">
+        <div class="card card-statistic">
+            <div class="card-body p-0">
+                <div class="d-flex flex-column">
+                    <div class='px-3 py-3 d-flex justify-content-between'>
+                        <a asp-controller="Insureds" asp-action="Index"><h3 class='card-title'>Pojištěnci</h3></a>
+                        <div class="card-right d-flex align-items-center justify-content-end">
+                            <p>@ViewData["InsuredsCount"]</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 col-xl-4">
+        <div class="card card-statistic">
+            <div class="card-body p-0">
+                <div class="d-flex flex-column">
+                    <div class='px-3 py-3 d-flex justify-content-between'>
+                        <a asp-controller="InsuranceInsureds" asp-action="Index"><h3 class='card-title'>Sjednáno pojištění</h3></a>
+                        <div class="card-right d-flex align-items-center">
+                            <p>@ViewData["InsuredInsurances"]</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-12 col-xl-4">
+        <div class="card card-statistic">
+            <div class="card-body p-0">
+                <div class="d-flex flex-column">
+                    <div class='px-3 py-3 d-flex justify-content-between'>
+                        <a asp-controller="Events" asp-action="Index"><h3 class='card-title'>Události</h3></a>
+                        <div class="card-right d-flex align-items-center">
+                            <p>@ViewData["EventsCount"]</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

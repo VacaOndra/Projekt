@@ -1,0 +1,111 @@
+﻿@model Pojisteni.Models.Insured
+
+@{
+    ViewData["Title"] = "Nový pojištěnec";
+}
+<form asp-action="Create">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="row">
+
+        <div class="col-md-6 col-12">
+            <div class="form-group has-icon-left">
+                <label asp-for="Name" class="control-label"></label>
+                <div class="position-relative">
+                    <input asp-for="Name" class="form-control" id="first-name-icon" required />
+                    <div class="form-control-icon">
+                        <i data-feather="user"></i>
+                    </div>
+                </div>
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6 col-12">
+            <div class="form-group has-icon-left">
+                <label asp-for="LastName" class="control-label"></label>
+                <div class="position-relative">
+                    <input asp-for="LastName" class="form-control" required />
+                    <div class="form-control-icon">
+                        <i data-feather="user"></i>
+                    </div>
+                </div>
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6 col-12">
+            <div class="form-group has-icon-left">
+                <label asp-for="Email" class="control-label"></label>
+                <div class="position-relative">
+                    <input asp-for="Email" class="form-control" required />
+                    <div class="form-control-icon">
+                        <i data-feather="mail"></i>
+                    </div>
+                </div>
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6 col-12">
+            <div class="form-group has-icon-left">
+                <label asp-for="PhoneNumber" class="control-label"></label>
+                <div class="position-relative">
+                    <input type="number" asp-for="PhoneNumber" class="form-control" required />
+                    <div class="form-control-icon">
+                        <i data-feather="phone"></i>
+                    </div>
+                </div>
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6 col-12">
+            <div class="form-group has-icon-left">
+                <label asp-for="IdentityNumber" class="control-label"></label>
+                <div class="position-relative">
+                    <input type="number" asp-for="IdentityNumber" class="form-control" required />
+                    <div class="form-control-icon">
+                        <i data-feather="info"></i>
+                    </div>
+                </div>
+                <span asp-validation-for="IdentityNumber" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6 col-12">
+            <div class="form-group has-icon-left">
+                <label asp-for="Adress" class="control-label"></label>
+                <div class="position-relative">
+                    <input asp-for="Adress" class="form-control" required />
+                    <div class="form-control-icon">
+                        <i data-feather="home"></i>
+                    </div>
+                </div>
+                <span asp-validation-for="Adress" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6 col-12">
+            <div class="form-group has-icon-left">
+                <label asp-for="City" class="control-label"></label>
+                <div class="position-relative">
+                    <input asp-for="City" class="form-control" required />
+                    <div class="form-control-icon">
+                        <i data-feather="map"></i>
+                    </div>
+                </div>
+                <span asp-validation-for="City" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6 col-12">
+            <div class="form-group has-icon-left">
+                <label asp-for="PostalCode" class="control-label"></label>
+                <div class="position-relative">
+                    <input type="number" asp-for="PostalCode" class="form-control" required />
+                    <div class="form-control-icon">
+                        <i data-feather="tag"></i>
+                    </div>
+                </div>
+                <span asp-validation-for="PostalCode" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-12 d-flex justify-content-start">
+            <button type="submit" class="btn btn-primary mr-1 mb-1">Uložit</button>
+        </div>
+    </div>
+</form>
+

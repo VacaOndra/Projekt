@@ -1,0 +1,85 @@
+﻿@model IEnumerable<Pojisteni.Models.Event>
+
+@{
+    ViewData["Title"] = "Události";
+}
+@if (Model.Count() > 0)
+{
+    <table id="data-table" class="table table-sm table-striped">
+        <thead>
+            <tr>
+                @if(User.IsInRole("admin"))
+                {
+                    <th class="fit pl-1 pr-5">
+                        @Html.DisplayNameFor(model => model.InsuranceInsured.Insured.LastNameAndName)
+                    </th>
+                }
+                <th class="fit pl-1 pr-5">
+                    @Html.DisplayNameFor(model => model.InsuranceInsured.Insurance.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th class="fit pl-1 pr-5">
+                    @Html.DisplayNameFor(model => model.Settled)
+                </th>
+                <th class="fit pl-1 pr-5">
+                    @Html.DisplayNameFor(model => model.DateTime)
+                </th>
+                <th class="fit pl-1 pr-5">
+                    @Html.DisplayNameFor(model => model.InsertDateTime)
+                </th>
+                <th class="fit"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    @if (User.IsInRole("admin"))
+                    {
+                        <td class="align-middle fit pl-1 pr-5">
+                            @Html.DisplayFor(modelItem => item.InsuranceInsured.Insured.LastNameAndName)
+                        </td>
+                    }
+                    <td class="align-middle fit pl-1 pr-5">
+                        @Html.DisplayFor(modelItem => item.InsuranceInsured.Insurance.Name)
+                    </td>
+                    <td class="align-middle">
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td class="align-middle fit pl-1 pr-5">
+                        @if (item.Settled)
+                        {
+                            <span class="badge bg-success">ANO</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-danger">NE</span>
+                        }
+                    </td>
+                    <td class="align-middle fit pl-1 pr-5">
+                        @item.DateTime.ToShortDateString()
+                    </td>
+                    <td class="align-middle fit pl-1 pr-5">
+                        @item.InsertDateTime.ToShortDateString()
+                    </td>
+                    <td class="align-middle fit">
+                        <a asp-action="Details" asp-route-id="@item.ID" class="btn btn-primary">Detail</a>
+                        @if(User.IsInRole("admin"))
+                        {
+                            <a asp-action="Edit" asp-route-id="@item.ID" class="btn btn-warning">Editovat</a>
+                            <a asp-action="Delete" asp-route-id="@item.ID" class="btn btn-danger">Odstranit</a>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-light-warning text-center h6" role="alert">
+        Zatím nejsou evidovány žádné pojistné události
+    </div>
+}

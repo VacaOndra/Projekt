@@ -1,0 +1,60 @@
+﻿@model Pojisteni.Models.Insured
+
+@{
+    ViewData["Title"] = "Upravit pojištěnce";
+}
+<form asp-action="Edit">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="row">
+        <div class="form-group col-md-4">
+            <label asp-for="Name" class="control-label"></label>
+            <input asp-for="Name" class="form-control" required />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="form-group col-md-4">
+            <label asp-for="LastName" class="control-label"></label>
+            <input asp-for="LastName" class="form-control" required />
+            <span asp-validation-for="LastName" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-md-4">
+            <label asp-for="Email" class="control-label"></label>
+            <input asp-for="Email" class="form-control" required />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="form-group col-md-4">
+            <label asp-for="PhoneNumber" class="control-label"></label>
+            <input asp-for="PhoneNumber" class="form-control" required />
+            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-md-4">
+            <label asp-for="IdentityNumber" class="control-label"></label>
+            <input asp-for="IdentityNumber" class="form-control" required />
+            <span asp-validation-for="IdentityNumber" class="text-danger"></span>
+        </div>
+        <div class="form-group col-md-4">
+            <label asp-for="Adress" class="control-label"></label>
+            <input asp-for="Adress" class="form-control" required />
+            <span asp-validation-for="Adress" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-md-4">
+            <label asp-for="City" class="control-label"></label>
+            <input asp-for="City" class="form-control" required />
+            <span asp-validation-for="City" class="text-danger"></span>
+        </div>
+        <div class="form-group col-md-4">
+            <label asp-for="PostalCode" class="control-label"></label>
+            <input asp-for="PostalCode" class="form-control" required />
+            <span asp-validation-for="PostalCode" class="text-danger"></span>
+        </div>
+        <div class="form-group my-3">
+            <input type="submit" value="Uložit" class="btn btn-primary" />
+        </div>
+    </div>
+</form>
+

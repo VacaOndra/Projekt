@@ -1,0 +1,47 @@
+﻿@model Pojisteni.Models.InsuranceInsured
+
+@{
+    ViewData["Title"] = "Upravit pojištění pro pojištěnce";
+}
+<h4>Upravit pojištění pro pojištěnce '@ViewBag.Insured.LastNameAndName'</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ID" />
+            <div class="form-group">
+                <input type="hidden" asp-for="InsuredID" class="form-control" value="@Model.InsuredID" />
+            </div>
+            <div class="form-group">
+                <label asp-for="InsuranceID" class="control-label"></label>
+                <select asp-for="InsuranceID" class="form-select" asp-items="ViewBag.InsuranceID"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Amount" class="control-label"></label>
+                <input asp-for="Amount" class="form-control" />
+                <span asp-validation-for="Amount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Subject" class="control-label"></label>
+                <input asp-for="Subject" class="form-control" />
+                <span asp-validation-for="Subject" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StartsAt" class="control-label"></label>
+                <input type="date" asp-for="StartsAt" class="form-control" />
+                <span asp-validation-for="StartsAt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EndsAt" class="control-label"></label>
+                <input type="date" asp-for="EndsAt" class="form-control" />
+                <span asp-validation-for="EndsAt" class="text-danger"></span>
+            </div>
+            <div class="form-group my-3">
+                <input type="submit" value="Uložit" class="btn btn-primary" />
+                <a href='javascript:history.go(-1)' class="btn btn-warning">ZPĚT</a>
+            </div>
+        </form>
+    </div>
+</div>
+

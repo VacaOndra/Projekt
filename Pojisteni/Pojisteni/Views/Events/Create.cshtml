@@ -1,0 +1,35 @@
+﻿@model Pojisteni.Models.Event
+
+@{
+    ViewData["Title"] = "Vytvořit pojistnou událost";
+}
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input type="hidden" asp-for="InsuranceInsuredID" class="form-control" value="@ViewBag.InsuranceInsured.ID" />
+            </div>
+            <div class="form-group">
+                <input type="hidden" asp-for="Settled" class="form-control" value="@false" />
+            </div>
+            <div class="form-group">
+                <input type="hidden" asp-for="InsertDateTime" class="form-control" value="@DateTime.Now" />
+            </div>
+            <div class="form-group">
+                <label asp-for="DateTime" class="control-label"></label>
+                <input type="date" asp-for="DateTime" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <textarea asp-for="Description" class="form-control" required></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group my-3">
+                <input type="submit" value="Uložit" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+

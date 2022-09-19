@@ -1,0 +1,36 @@
+﻿@model Pojisteni.Models.RegisterViewModel
+@{
+    ViewData["Title"] = $"Nový login pro pojištěnce {ViewBag.Insured.LastNameAndName}";
+}
+<section>
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <form class="d-flex flex-column gap-2" asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <input type="hidden" asp-for="InsuredID" class="form-control" value="@ViewBag.Insured.ID" />
+                </div>
+                <div class="form-group">
+                    <input type="hidden" asp-for="Email" class="form-control" value="@ViewBag.Insured.Email" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password"></label>
+                    <input asp-for="Password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ConfirmPassword"></label>
+                    <input asp-for="ConfirmPassword" class="form-control" />
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
+                <div class="col-12 d-flex justify-content-start">
+                    <button type="submit" class="btn btn-primary">Uložit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

@@ -1,0 +1,53 @@
+﻿@model Pojisteni.Models.InsuranceInsured
+
+@{
+    ViewData["Title"] = "Smazat pojištění";
+}
+<div>
+    <h4>Opravdu chcete smazat pojištění ?</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Insured.LastNameAndName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Insured.LastNameAndName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Insurance.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Insurance.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Amount)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Amount)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Subject)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Subject)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.StartsAt)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.StartsAt)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.EndsAt)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EndsAt)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="ID" />
+        <input type="submit" value="ANO" class="btn btn-danger" />
+        <a asp-action="Details" asp-controller="Insureds" asp-route-id="@Model.InsuredID" class="btn btn-warning">NE</a>
+    </form>
+</div>
